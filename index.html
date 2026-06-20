@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Val Gomes - Estética e Massoterapia</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* RESET E CONFIGURAÇÕES GERAIS */
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --cor-fundo: #fcf8f4;       /* Tom off-white caloroso de fundo */
+      --cor-fundo-alt: #f3eae0;   /* Areia pastel idêntico ao fundo do logo */
+      --cor-texto: #4a3b2c;       /* Castanho escuro para leitura confortável */
+      --cor-principal: #634d3a;   /* Marrom elegante do nome "Val Gomes" */
+      --cor-detalhe: #c89b5a;     /* Dourado/bronze sutil ajustado conforme o logo */
+      --cor-detalhe-hover: #b68646; /* Dourado mais escuro para transições */
+      --cor-borda: #e6d6c3;
+    }
+
+    body{
+      background-color: var(--cor-fundo);
+      color: var(--cor-texto);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, .logo {
+      font-family: 'Cinzel', Georgia, serif;
+      color: var(--cor-principal);
+      font-weight: 400;
+    }
+
+    /* MENU DE NAVEGAÇÃO FIXED PREMIUM */
+    header{
+      width: 100%;
+      background: rgba(243, 234, 224, 0.95);
+      padding: 15px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid var(--cor-borda);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    }
+
+    .logo{
+      font-size: 24px;
+      letter-spacing: 1px;
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--cor-principal);
+    }
+    
+    .logo span {
+      color: var(--cor-detalhe);
+    }
+
+    nav a{
+      color: var(--cor-texto);
+      text-decoration: none;
+      margin-left: 25px;
+      font-size: 13px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: 0.3s;
+    }
+
+    nav a:hover{
+      color: var(--cor-detalhe);
+    }
+
+    /* Menu Hamburguer Responsivo puramente com CSS */
+    .menu-control {
+      display: none;
+    }
+
+    .menu-icon {
+      display: none;
+      cursor: pointer;
+      font-size: 28px;
+      color: var(--cor-principal);
+    }
+
+    /* BANNER HOME */
+    .banner{
+      width: 100%;
+      height: 100vh;
+      background: linear-gradient(rgba(243, 234, 224, 0.65), rgba(252, 248, 252, 0.45)), 
+                  url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=1600&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .banner-text{
+      max-width: 800px;
+      animation: fadeIn 1.5s ease;
+    }
+
+    .banner-text h1{
+      font-size: 48px;
+      margin-bottom: 20px;
+      color: var(--cor-principal);
+      line-height: 1.2;
+    }
+
+    .banner-text p{
+      font-size: 18px;
+      margin-bottom: 35px;
+      color: var(--cor-texto);
+      letter-spacing: 0.5px;
+    }
+
+    .btn{
+      display: inline-block;
+      padding: 14px 35px;
+      background: var(--cor-detalhe);
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn:hover{
+      background: var(--cor-detalhe-hover);
+      transform: translateY(-2px);
+    }
+
+    /* SEÇÕES DO SITE */
+    section{
+      padding: 100px 8%;
+    }
+
+    section h2{
+      text-align: center;
+      margin-bottom: 15px;
+      font-size: 32px;
+      position: relative;
+    }
+
+    section h2::after {
+      content: '✦';
+      display: block;
+      font-size: 14px;
+      color: var(--cor-detalhe);
+      margin-top: 5px;
+    }
+
+    .subtitle {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 60px auto;
+      color: #7a6652;
+      font-style: italic;
+      font-size: 15px;
+    }
+
+    /* SEÇÃO SOBRE */
+    #sobre {
+      background-color: white;
+    }
+
+    .sobre-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .sobre-texto p {
+      font-size: 16px;
+      margin-bottom: 20px;
+      color: var(--cor-texto);
+      text-align: justify;
+    }
+
+    .sobre-img img {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(99, 77, 58, 0.08);
+    }
+
+    /* DIFERENCIAIS */
+    #diferenciais {
+      background-color: white;
+      padding-top: 0px;
+    }
+
+    .diferenciais-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 25px;
+      text-align: center;
+    }
+
+    .diferencial-item {
+      padding: 25px;
+      background: var(--cor-fundo);
+      border-radius: 6px;
+      border: 1px solid var(--cor-borda);
+      transition: 0.3s;
+    }
+
+    .diferencial-item:hover {
+      border-color: var(--cor-detalhe);
+    }
+
+    .diferencial-item span {
+      font-size: 24px;
+      color: var(--cor-detalhe);
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .diferencial-item h4 {
+      font-family: 'Cinzel', serif;
+      color: var(--cor-principal);
+      font-size: 16px;
+    }
+
+    /* SERVIÇOS (CARDS) */
+    #servicos {
+      background-color: var(--cor-fundo-alt);
+    }
+
+    .cards{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+    }
+
+    .card{
+      background: white;
+      padding: 40px 30px;
+      border-radius: 6px;
+      border-top: 3px solid var(--cor-detalhe);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+      transition: 0.3s;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card:hover{
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(99, 77, 58, 0.08);
+    }
+
+    .card h3{
+      margin-bottom: 15px;
+      font-size: 20px;
+    }
+
+    .card p{
+      font-size: 14px;
+      margin-bottom: 25px;
+      color: #666;
+    }
+
+    .card .preco{
+      font-weight: 600;
+      color: var(--cor-principal);
+      font-size: 18px;
+      display: block;
+      margin-top: auto;
+    }
+
+    /* PORTFÓLIO / GALERIA */
+    #galeria {
+      background-color: white;
+    }
+
+    .galeria{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .galeria-item {
+      overflow: hidden;
+      border-radius: 6px;
+      position: relative;
+    }
+
+    .galeria img{
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      transition: 0.5s ease;
+      display: block;
+    }
+
+    .galeria-item:hover img {
+      transform: scale(1.05);
+    }
+
+    /* BLOG / NOTÍCIAS */
+    #blog {
+      background-color: var(--cor-fundo-alt);
+    }
+
+    .blog-meta {
+      font-size: 11px;
+      color: var(--cor-detalhe);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    /* CONTATO E LOCALIZAÇÃO (CORRIGIDO E SEPARADO) */
+    #contato {
+      background-color: white;
+    }
+
+    .contato-wrapper{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+    }
+
+    .info-contato h3 {
+      font-size: 22px;
+      margin-bottom: 25px;
+    }
+
+    .info-contato p{
+      margin-bottom: 18px;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+    }
+
+    .info-contato strong {
+      color: var(--cor-principal);
+      margin-right: 8px;
+    }
+
+    .social-btn-container {
+      margin-top: 25px;
+      margin-bottom: 25px;
+    }
+
+    /* MAPA ATUALIZADO PARA ASA NORTE CLN 711 */
+    .mapa-container {
+      margin-top: 20px;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--cor-borda);
+    }
+
+    .mapa-container iframe {
+      width: 100%;
+      height: 280px;
+      border: 0;
+      display: block;
+    }
+
+    /* FORMULÁRIO LIMPO E OPERANTE */
+    form{
+      display: flex;
+      flex-direction: column;
+      background: var(--cor-fundo-alt);
+      padding: 40px;
+      border-radius: 8px;
+    }
+
+    form input, form textarea{
+      padding: 15px;
+      margin-bottom: 20px;
+      border: 1px solid var(--cor-borda);
+      border-radius: 4px;
+      background: white;
+      font-size: 14px;
+      color: var(--cor-texto);
+      outline: none;
+      transition: 0.3s;
+    }
+
+    form input:focus, form textarea:focus {
+      border-color: var(--cor-principal);
+      box-shadow: 0 0 5px rgba(99, 77, 58, 0.1);
+    }
+
+    form textarea{
+      height: 130px;
+      resize: none;
+    }
+
+    form button{
+      padding: 16px;
+      border: none;
+      background: var(--cor-principal);
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    form button:hover{
+      background: var(--cor-detalhe);
+    }
+
+    /* BOTÃO FLUTUANTE DO WHATSAPP REAL CORRIGIDO */
+    .whatsapp-btn{
+      position: fixed;
+      right: 25px;
+      bottom: 25px;
+      background: #25d366;
+      color: white;
+      text-decoration: none;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      z-index: 999;
+      transition: 0.3s ease;
+      font-size: 24px;
+    }
+
+    .whatsapp-btn:hover {
+      transform: scale(1.1);
+      background: #20ba5a;
+    }
+
+    /* RODAPÉ EXIGIDO ACADÊMICO */
+    footer{
+      background: var(--cor-principal);
+      color: #eae1d8;
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 13px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    footer p{
+      margin: 8px 0;
+    }
+
+    .creditos-alunos {
+      margin-top: 15px !important;
+      font-size: 12px;
+      color: var(--cor-detalhe);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding-top: 15px;
+    }
+
+    /* ANIMAÇÃO */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* RESPONSIVIDADE & MENU MOBILE */
+    @media(max-width: 900px){
+      header{
+        padding: 15px 6%;
+      }
+
+      .menu-icon {
+        display: block;
+      }
+
+      nav {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: rgba(243, 234, 224, 0.98);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 40px;
+        transition: 0.4s ease;
+        border-top: 1px solid var(--cor-borda);
+      }
+
+      nav a {
+        margin: 15px 0;
+        font-size: 16px;
+      }
+
+      /* Quando o checkbox invisível estiver marcado, exibe o menu lateral */
+      .menu-control:checked ~ nav {
+        left: 0;
+      }
+
+      .sobre-container, .contato-wrapper {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .banner-text h1{
+        font-size: 32px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <a href="#home" class="logo">Val <span>Gomes</span></a>
+    
+    <input type="checkbox" id="menu-toggle" class="menu-control">
+    <label for="menu-toggle" class="menu-icon">☰</label>
+    
+    <nav>
+      <a href="#home" onclick="document.getElementById('menu-toggle').checked = false">Home</a>
+      <a href="#sobre" onclick="document.getElementById('menu-toggle').checked = false">Sobre</a>
+      <a href="#servicos" onclick="document.getElementById('menu-toggle').checked = false">Serviços</a>
+      <a href="#galeria" onclick="document.getElementById('menu-toggle').checked = false">Portfólio</a>
+      <a href="#blog" onclick="document.getElementById('menu-toggle').checked = false">Blog</a>
+      <a href="#contato" onclick="document.getElementById('menu-toggle').checked = false">Contato</a>
+    </nav>
+  </header>
+
+  <section class="banner" id="home">
+    <div class="banner-text">
+      <h1>Estética e Massoterapia</h1>
+      <p>Sinta a harmonia renovadora através de tratamentos corporais exclusivos, desenhados para o seu bem-estar e equilíbrio.</p>
+      <a href="#contato" class="btn">Agendar uma sessão</a>
+    </div>
+  </section>
+
+  <section id="sobre">
+    <h2>Sobre o Espaço</h2>
+    <p class="subtitle">Cuidado e dedicação individualizada</p>
+    
+    <div class="sobre-container">
+      <div class="sobre-texto">
+        <p>O espaço <strong>Val Gomes - Estética e massoterapia</strong> nasceu com a missão de proporcionar um refúgio para o estresse do dia a dia, promovendo a beleza integrada à saúde física e mental.</p>
+        <p>Utilizando técnicas modernas e um toque terapêutico acolhedor, cada atendimento é personalizado para respeitar os limites e as necessidades individuais de nossos clientes, resgatando a autoestima e a vitalidade.</p>
+      </div>
+      <div class="sobre-img">
+        <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?q=80&w=800&auto=format&fit=crop" alt="Ambiente de massoterapia">
+      </div>
+    </div>
+  </section>
+
+  <section id="diferenciais">
+    <h2>Por que escolher a Val Gomes?</h2>
+    <p class="subtitle">Excelência e cuidado em cada detalhe do seu atendimento</p>
+    <div class="diferenciais-grid">
+      <div class="diferencial-item">
+        <span>✓</span>
+        <h4>Atendimento Humanizado</h4>
+      </div>
+      <div class="diferencial-item">
+        <span>✓</span>
+        <h4>Ambiente Acolhedor</h4>
+      </div>
+      <div class="diferencial-item">
+        <span>✓</span>
+        <h4>Técnicas Atualizadas</h4>
+      </div>
+      <div class="diferencial-item">
+        <span>✓</span>
+        <h4>Produtos de Qualidade</h4>
+      </div>
+      <div class="diferencial-item">
+        <span>✓</span>
+        <h4>Foco no Bem-Estar</h4>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicos">
+    <h2>Nossos Serviços</h2>
+    <p class="subtitle">Tratamentos estéticos e relaxantes com foco nos seus objetivos</p>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Massagem Relaxante</h3>
+        <p>Alívio imediato de tensões musculares, estresse mental e ativação da circulação sanguínea.</p>
+        <span class="preco">R$ 120,00</span>
+      </div>
+
+      <div class="card">
+        <h3>Drenagem Linfática</h3>
+        <p>Perfeita para redução de edemas, retenção de líquidos e eliminação de toxinas do organismo.</p>
+        <span class="preco">R$ 150,00</span>
+      </div>
+
+      <div class="card">
+        <h3>Limpeza de Pele</h3>
+        <p>Remoção profunda de impurezas, desintoxicação celular e renovação do brilho natural da face.</p>
+        <span class="preco">R$ 100,00</span>
+      </div>
+
+      <div class="card">
+        <h3>Massagem Modeladora</h3>
+        <p>Movimentos vigorosos projetados para modelar os contornos corporais e melhorar a textura da pele.</p>
+        <span class="preco">R$ 160,00</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="galeria">
+    <h2>Portfólio & Espaço</h2>
+    <p class="subtitle">Conheça a estrutura aconchegante preparada para receber você</p>
+
+    <div class="galeria">
+      <div class="galeria-item">
+        <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=600&auto=format&fit=crop" alt="Pedras quentes terapêuticas">
+      </div>
+      <div class="galeria-item">
+        <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=600&auto=format&fit=crop" alt="Aplicação de máscara facial">
+      </div>
+      <div class="galeria-item">
+        <img src="https://images.unsplash.com/photo-1507652313519-d4e9174996dd?q=80&w=600&auto=format&fit=crop" alt="Sala de atendimento confortável">
+      </div>
+    </div>
+  </section>
+
+  <section id="blog">
+    <h2>Dicas de Bem-estar</h2>
+    <p class="subtitle">Acompanhe nossos artigos para manter uma vida equilibrada</p>
+
+    <div class="cards">
+      <div class="card" style="text-align: left; border-top: none;">
+        <span class="blog-meta">01 Junho, 2026 • Saúde</span>
+        <h3>Os Benefícios Ocultos da Massagem Regular</h3>
+        <p>Muito além do relaxamento imediato, a massoterapia atua diretamente na redução do cortisol e no aumento da imunidade.</p>
+      </div>
+
+      <div class="card" style="text-align: left; border-top: none;">
+        <span class="blog-meta">28 Maio, 2026 • Corporal</span>
+        <h3>Drenagem Linfática no Pós-Operatório</h3>
+        <p>Entenda por que a técnica é fundamental para acelerar a recuperação e diminuir a retenção de líquidos pós-cirúrgica.</p>
+      </div>
+
+      <div class="card" style="text-align: left; border-top: none;">
+        <span class="blog-meta">15 Maio, 2026 • Skincare</span>
+        <h3>Como Cuidar da Pele Durante o Inverno</h3>
+        <p>Dicas práticas de hidratação profunda e proteção necessárias para evitar o ressecamento da pele nos dias frios.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato">
+    <h2>Fale Conosco</h2>
+    <p class="subtitle">Agende seu horário ou tire suas dúvidas através dos nossos canais</p>
+
+    <div class="contato-wrapper">
+      <div class="info-contato">
+        <h3>Informações de Contato</h3>
+        <p><strong>WhatsApp:</strong> (61) 99246-7835</p>
+        <p><strong>Instagram:</strong> @esteticavalgomes</p>
+        <p><strong>E-mail:</strong> gomesval5@gmail.com</p>
+        <p><strong>Endereço:</strong> CLN 711 Bloco D, Asa Norte - Brasília/DF, CEP: 70750-554</p>
+
+        <div class="social-btn-container">
+          <a href="https://www.instagram.com/esteticavalgomes?igsh=MWZpa3d4bGh4Z2FvZQ==" target="_blank" class="btn">Ver Instagram</a>
+        </div>
+
+        <div class="mapa-container">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3839.4674312676054!2d-47.894380623972274!3d-15.752834784884262!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a3a1215bda873%3A0xda55639b51faeb32!2sCLN%20711%20-%20Asa%20Norte%2C%20Bras%C3%ADlia%20-%20DF%2C%2070750-550!5e0!3m2!1spt-BR!2sbr!4v1711900000000!5m2!1spt-BR!2sbr" 
+            allowfullscreen="" 
+            loading="lazy">
+          </iframe>
+        </div>
+      </div>
+
+      <form action="https://formspree.io/f/xqeoerzo" method="POST">
+        <input type="text" name="name" placeholder="Seu Nome" required />
+        <input type="email" name="email" placeholder="Seu E-mail" required />
+        <input type="tel" name="phone" placeholder="Seu Telefone / WhatsApp" />
+        <textarea name="message" placeholder="Sua Mensagem ou Dúvida" required></textarea>
+        
+        <button type="submit">Enviar via Email</button>
+      </form>
+    </div>
+  </section>
+
+  <a href="https://wa.me/5561992467835?text=Olá!%20Gostaria%20de%20saber%20mais%20informações%20sobre%20os%20procedimentos%20estéticos." 
+     target="_blank" 
+     class="whatsapp-btn" 
+     title="Fale conosco no WhatsApp">
+     <span style="font-family: sans-serif; font-weight: bold;">W</span>
+  </a>
+
+  <footer>
+    <p>Val Gomes - Estética e massoterapia © 2026. Todos os direitos reservados.</p>
+    <p>Site institucional voltado para a divulgação de serviços de saúde e estética.</p>
+    
+    <p class="creditos-alunos">
+      <strong>Integrantes do Grupo:</strong><br>
+      Luiz Fernando Correia Andrade - Matrícula: 2026102030 <br>
+      [Nome do Aluno 2] - Matrícula: [00000000] | [Nome do Aluno 3] - Matrícula: [00000000]
+    </p>
+  </footer>
+
+</body>
+</html>
